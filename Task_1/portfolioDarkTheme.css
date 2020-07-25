@@ -1,0 +1,10 @@
+:root{
+    --primaryColor: white;
+    --secondaryColor: #333;
+    --filterColor: #ccc;
+    --backgroundColor: #181818;
+}
+
+.navbar{
+    background-image: linear-gradient(to right, black 0%, #121212 100%);
+}

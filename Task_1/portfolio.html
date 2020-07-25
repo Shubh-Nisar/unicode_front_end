@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- font-awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Local CSS file -->
+    <link rel="icon" type="icon" href="pictures/shubh2.jpg">
+    <link rel="stylesheet" href="../Task_1/portfolio.css">
+    <link id="toggleTheme" rel="stylesheet" href="">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Portfolio | Shubh Nisar</title>
+    </head>
+
+    <body>
+        <div class='navbar'>
+            <h1>Portfolio</h1>
+        </div>
+        <div class="block block-main">
+            <div class="block_elem block_elem-card card">
+                <div class="block_elem block_elem-card-image">
+                    <!-- PROFILE IMAGE -->
+                    <img src="../Task_1/pictures/shubh2.jpg" alt="Shubh Nisar" class="materialboxed">
+                    <div class="block_elem_elem_elem block_elem_elem_elem-study">
+                        <!-- ACADEMICS -->
+                        <h6>School: HVB Academy, Marine Drive</h6>
+                        <h6>Junior College: K.C. College, Churchgate</h6>
+                        <h6>Senior College: D.J. Sanghvi COE, Vile Parle</h6>
+                        <div class='flex-buttons'>
+                            <h6 class='hide-on-small-only'><a href="" class='contact-me'>Contact Me</a></h6>
+                            <!-- toggleTheme() FUNCTION TO TOGGLE THEMES -->
+                            <h6 class='hide-on-small-only'><div onclick="toggleTheme()"><a class='theme' id='themeBtn'>DARK THEME</a></div></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="block_elem block_elem-float card-stacked">
+                    <div class="block_elem-elem card-content" style="padding-top:0 !important">
+                        <!-- MAIN NAME HEADER -->
+                        <h2>Shubh Nisar</h2>
+                        <!-- CONNECTNG SOCIAL MEDIA -->
+                        <div class="block_elem block_elem-social">
+                            <!-- INSTAGRAM -->
+                            <a href="https://instagram.com/shubh_nisar.28?igshid=xi416yom4znf" class="pink-text"><i class="fa fa-instagram fa-3x"></i></a>
+                            <!-- GITHUB -->
+                            <a href="https://github.com/Shubh-Nisar" class="black-text"><i class="fa fa-github fa-3x"></i></a>
+                            <!-- LINKED-IN -->
+                            <a href="https://www.linkedin.com/in/shubh-nisar-89a6a31aa" style="color: #0e76a8;"><i class="fa fa-linkedin fa-3x"></i></a>
+                            <!-- EMAIL -->
+                            <a href="mailto:shubhnisar123@gmail.com" class="red-text"><i class="fa fa-envelope  fa-3x"></i></a>
+                        </div>
+                        <div class="hide-on-med-and-up">
+                            <!-- CONTACT ME BUTTON LOOK -->
+                            <h6><br><br><a href="" class='contact-me-small-screen'>Contact Me</a><br><br></h6>
+                            <!-- toggleTheme() FUNCTION TO TOGGLE THEMES -->
+                            <h6><div onclick="toggleTheme()"><br><a class='contact-me-small-screen' id='themeBtnSmall'>DARK THEME</a><br><br></div></h6>
+                        </div>
+                        <div class="block_elem_elem_elem block_elem_elem_elem-languages">
+                            <h4><i class="fa fa-code"></i> Languages / Frameworks</h4>
+                            <h6>
+                                <!-- LANGUAGES LEARNT -->
+                                <ul class='lefter'>
+                                    <li><a href="#">HTML</a></li>
+                                    <li><a href="#">JAVASCRIPT</a></li>
+                                    <li><a href="#">DJANGO</a></li>
+                                    <li><a href="#">REACT NATIVE</a></li>
+                                    <li><a href="#">JAVA</a></li>
+                                    <li><a href="#">ALP 8085 MP</a></li>
+                                    <li><a href="#">MATERIALIZE CSS</a></li>
+                                </ul>
+                                <ul class="righter">
+                                    <li><a href="#">CSS</a></li>
+                                    <li><a href="#">PYTHON</a></li>
+                                    <li><a href="#">BOOTSTRAP CSS</a></li>
+                                    <li><a href="#">OOP C++</a></li>
+                                    <li><a href="#">VISUAL BASIC</a></li>
+                                    <li><a href="#">C PROGRAMMING</a></li>
+                                    <li><a href="#">GIT</a></li>
+                                </ul>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block_elem block_elem-describe-me">
+                <!--<hr style="height:1px; width: 100%; background-color:grey">-->
+                <div class="block_elem block_elem-grades card">
+                    <!-- GRADE CARD -->
+                    <h4>Grades</h4>
+                    <ul>
+                        <li><a href="#">ICSE 10th: 95.56%</a></li>
+                        <li><a href="#">HSC 12th: 88.1%</a></li>
+                        <li><a href="#">JEE: 97.48% ile / 95.2% ile</a></li>
+                        <li><a href="#">MHT-CET: 98.89%</a></li>
+                    </ul>
+                </div>
+
+                <div class="block_elem block_elem-projects card">
+                    <!-- PROJECT CARD -->
+                    <h4>Projects</h4>
+                    <ul>
+                        <li>
+                            <!-- FASHIONCRAFT -->
+                            <h5>Fashioncraft</h5>
+                            <p>
+                                My very first project in Web-Developement. Fashioncraft is a site which offers clothing accessories for men, women and kids. The products can be added via the Databse connected with our Django backend. This project is a collaborative project, for more information about the creators visit the about page.
+                            </p>
+                            <a href="https://fashioncraft.herokuapp.com">fashioncraft.com</a>
+                        </li>
+
+                        <li>
+                            <!-- SELLBUY -->
+                            <h5>SellBuy</h5>
+                            <p>
+                                My very first HACKATHON project in Web-Developement. SellBuy is a site which offers a platform to the farmers to add a crop they wish to sell from their device after logging into their personal farmer dashboard via LOGIN! The crop instantly reflects on a new page which all available crops in the market are listed. This page is also visible to the buyer after logging into their personal buyer dashboard via again a LOGIN! This project is a collaborative project, for more information about the creators visit the about page. 
+                                <br><br> 
+                                <!-- CERTIFICATE PDF -->
+                                Attached you will find the pdf for participation certificate. <a href="../Task_1/pdfs/hackathon_certificate.pdf" target="_blank">Click to view Certificate</a>
+                                <br><br>
+                                <!-- SELLBUY VIDEO EXPLANATION -->
+                                Video to explain the project with more in-sight. <a href="../Task_1/videos/hackathon_project1.mp4" target="_blank">Click to view Video</a>
+                            </p>
+                            <a href="https://github.com/Shubh-Nisar/Commodity-Exchange-Market">sellbuy.com</a>
+                        </li>
+
+                        <li>
+                            <!-- XO-GAME -->
+                            <h5>XO-Game</h5>
+                            <p>
+                                A very own XO Game made using PYTHON! Features include scoreboard, automatic game resets and user friendly UI. Visit README.md for more details and pictures.
+                            </p>
+                            <a href="https://github.com/Shubh-Nisar/XO-Game">XO-Game</a>
+                        </li>
+
+                        <li>
+                            <!-- IVEX -->
+                            <h5>iVex</h5>
+                            <p>
+                                A Front-End Hotel-Management project that shows various hotel facilites, services, offers and amenities offered by the hotel. Amidst the COVID crisis we have also kept a health advisory page to show our customers the safety precautions and measures taken by the company. This project is a collaborative project, for more information about the creators visit the about page.
+                            </p>
+                            <a href="https://github.com/Shubh-Nisar/Hotel-Management">iVex.com</a>
+                        </li>
+
+                        <li>
+                            <!-- CALCX -->
+                            <h5>CalcX</h5>
+                            <p>A Django project that can take basic equations and number inputs from student user and provide it's solution quickly. Certain data is calculated using Javascript for faster outputs. This project is a collaborative project, for more information about the creators visit the about page.</p>
+                            <a href="https://github.com/Shubh-Nisar/CalcX">calcx.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Execute when DOM has loaded //
+        $(document).ready(function(){
+            // INIT materialbox class of Materialize CSS //
+            $('.materialboxed').materialbox();
+        }); 
+        // HELPER TOGGLE VARIABLE //
+        var toggle = "LIGHT_THEME";
+        // FUNCTIONAL LOGIC FOR TOGGLE //
+        function toggleTheme(){
+            // LIGHT_THEME => DARK_THEME //
+            if(toggle == "LIGHT_THEME"){
+                document.getElementById('toggleTheme').href = '../Task_1/portfolioDarkTheme.css';
+                document.getElementById('themeBtn').innerHTML = 'LIGHT THEME'; 
+                document.getElementById('themeBtnSmall').innerHTML = 'LIGHT THEME'; 
+                toggle = "DARK_THEME";
+            } else{
+                // DARK_THEME => LIGHT_THEME //
+                document.getElementById('toggleTheme').href = '../Task_1/portfolioLightTheme.css';
+                document.getElementById('themeBtn').innerHTML = 'DARK THEME'; 
+                document.getElementById('themeBtnSmall').innerHTML = 'DARK THEME';
+                toggle="LIGHT_THEME"
+            }   
+        }
+    </script>
+    </body>
+  </html>
