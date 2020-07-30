@@ -1,0 +1,208 @@
+/* IMPORT GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+/* VARIABLE COLORS */
+:root{
+    --primaryColor: #333;
+    --secondaryColor: white;
+    --filterColor: grey;
+    --backgroundColor: white;
+}
+
+body{
+    background-color: var(--backgroundColor);
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.container{
+    width: 95% !important;
+}
+
+#world{
+    margin: 20px;
+    text-align: center;
+}
+
+#worldDataSet{
+    text-align: center;
+}
+
+.worldTitle{
+    text-align: center;
+}
+
+.worldTitle h3{
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: var(--primaryColor);
+}
+
+.worldTitle a{
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.worldData{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.worldTime{
+    text-align: center;
+    color: var(--primaryColor);
+}
+
+.lever{
+    background-color: var(--filterColor) !important;
+}
+
+.lever::after{
+    background-color: var(--primaryColor) !important;
+}
+
+#processing{
+    padding: 10px;
+    margin: 15px 7px 7px 7px;
+    border: 1.5px var(--primaryColor) solid;
+    border-radius: 10px;
+}
+
+table{
+    margin: 20px auto;
+    color: var(--primaryColor);
+}
+
+thead{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.additionalIndividualData{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+    background-color: var(--secondaryColor);
+    opacity: 0.9;
+    z-index: 50;
+    width: 80%;
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1.5px var(--primaryColor) solid;
+}
+
+.additionalIndividualData h4{
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--primaryColor);
+}
+
+.additionalIndividualData .mainData{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.additionalIndividualData .mainData h6{
+    padding: 10px;
+    border: 1.5px #333 solid;
+    border-radius: 10px;
+}
+
+#bar-chart{
+    width: 1600px;
+    height: 800px;
+}
+
+.close{
+    color: var(--primaryColor);
+}
+
+@media(max-width:768px){
+    .additionalIndividualData .mainData{
+        flex-wrap: wrap;
+    }
+    .additionalIndividualData .mainData h6{
+        flex: 0 0 40%;
+    }
+}
+
+@media(max-width: 600px){
+    .container{
+        width: 98%;
+    }
+    .worldTitle h3{
+        font-size: 25px;
+    }
+    .worldData{
+        flex-wrap: wrap;
+    }
+    .worldData h5{
+        flex: 0 0 35%;
+        font-size: 18px;
+    }
+    table{
+        margin: 5px auto;
+        font-size: 10px;
+    }
+    thead{
+        letter-spacing: 0;
+    }
+    .additionalIndividualData .mainData{
+        flex-wrap: wrap;
+    }
+    .additionalIndividualData .mainData h6{
+        flex: 0 0 60%;
+    }  
+    #bar-chart{
+        width: 3600px;
+        height: 1800px;
+    }
+    .additionalIndividualData{
+        width:95%;
+    }
+    .additionalIndividualData .mainData h6{
+        font-size: 14px;
+    }
+}
+
+@media(max-width:320px){
+    .worldTitle h3{
+        font-size: 20px;
+    }
+    .worldData h5{
+        flex: 0 0 45%;
+        font-size: 12px;
+    }
+    table{
+        margin: 5px auto;
+        font-size: 9px;
+    }
+}
+
+@media(max-width:300px){
+    .worldTitle h3{
+        font-size: 15px;
+    }
+    .worldData h5{
+        flex: 0 0 45%;
+        font-size: 10px;
+    }
+    table{
+        margin: 5px auto;
+        font-size: 7px;
+    }
+}

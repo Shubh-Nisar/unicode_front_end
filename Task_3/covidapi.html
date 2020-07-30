@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- font-awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- TITLE ICON -->
+    <link rel="icon" type="icon" href="../Task_1/pictures/shubh2.jpg">
+    <!-- Local CSS file -->
+    <link rel="stylesheet" href="../Task_3/covidapi.css">
+    <!-- TOGGLE THEME CSS -->
+    <link id="toggleTheme" rel="stylesheet" href="">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>COVID STATS | Shubh Nisar</title>
+  </head>
+
+  <body>
+      <!-- MAIN CONTAINER BLOCK -->
+      <div class="container" id='block'>
+        <!-- DISPLAY WORLD STATS -->
+        <div id="world"></div>
+        <hr class="hide-on-small-only">
+        <!-- TABLE FOR COUNTRY-WISE STATS -->
+        <table id='table'>
+            <thead>
+                <td class="center-align black-text grey lighten-2"><i class="fa fa-map"></i> Country</td>
+                <td class="center-align blue-text blue lighten-5"><i class="fa fa-line-chart"></i> Total Cases</td>
+                <td class="center-align green-text green lighten-5"><i class="fa fa-heartbeat"></i> Recovered</td>
+                <td class="center-align orange-text orange lighten-5"><i class="fa fa-arrow-up"></i> New Cases</td>
+                <td class="center-align red-text red lighten-5"><i class="fa fa-arrow-down"></i> Deaths</td>
+            </thead>
+            <!-- DATA RECEIVED FROM JS API -->
+            <tbody id='tbody'></tbody>
+        </table>
+      </div>
+    <!-- jQuery CDN -->  
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- Chart.js CDN FOR BAR-GRAPH -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script>
+              // FETCH ASYNC DATA VIA ARROW FUNC //
+              const getData = async () => {
+                // TRY BLOCK //
+                try{const data = await fetch("https://corona-virus-world-and-india-data.p.rapidapi.com/api", {
+                  "method": "GET",
+                  "headers": {
+                    "x-rapidapi-host": "corona-virus-world-and-india-data.p.rapidapi.com",
+                    "x-rapidapi-key": "071dbd0697msh1cda5b4957db9c3p1a0f88jsn5a7db404bd3a"
+                    }
+                  })
+
+                const jsonData = await data.json();
+                console.log(jsonData);
+                // UPDATE WORLD DATA ON DOM // 
+                const worldRow = document.createElement('div');
+                //worldRow.className = 'hoverable';
+                worldRow.id = 'worldDataSet';
+                // DYNAMIC DATA VIA BACKTICS //
+                worldRow.innerHTML = `
+                <div class='worldTitle'>
+                  <h3><i class="fa fa-globe"></i> Global Covid Stats</h3>
+                  <a class='theme' id='themeBtn' onclick="toggleTheme()"><i class="fa fa-refresh"></i> DARK THEME</a>
+                </div>
+                <div class='worldData'>
+                  <h5 class="blue-text center-align"><i class="fa fa-line-chart"></i> Total Cases: ${jsonData.world_total.total_cases}</h5>
+                  <h5 class="green-text center-align"><i class="fa fa-heartbeat"></i> Recovered: ${jsonData.world_total.total_recovered}</h5>
+                  <h5 class="orange-text center-align"><i class="fa fa-arrow-up"></i> New Cases: ${jsonData.world_total.new_cases}</h5>
+                  <h5 class="red-text center-align"><i class="fa fa-arrow-down"></i> Deaths: ${jsonData.world_total.total_deaths}</h5>
+                </div>
+                <div class='worldTime'>
+                  <p>[Stats Taken At: ${jsonData.world_total.statistic_taken_at}]</p>
+                  <p>
+                    <div class="switch" id="switch">
+                      <label>
+                        Max Cases
+                        <input type="checkbox" onClick='toggleOrder()'>
+                        <span class="lever"></span>
+                        Min Cases
+                      </label>
+                    </div>
+                  </p>
+                </div>
+                `;
+                // UPDATE ELEMENT ON DOM //
+                document.getElementById('world').append(worldRow);
+                //console.log(jsonData.countries_stat[0].country_name);
+                // FILL COUNTRY DATA IN TBODY //
+                for(const key in jsonData.countries_stat){
+                  //console.log(jsonData.countries_stat[key].country_name);
+                  // NEW TABLE ROW FOR EVERY COUNTRY //
+                  const newCountryRow = document.createElement('tr');
+                  newCountryRow.className = 'hoverable';
+                  newCountryRow.id = `${key}`;
+                  // DATA INSIDE tr INSIDE RESPECTIVE tds //
+                  newCountryRow.innerHTML = `
+                  <td>${jsonData.countries_stat[key].country_name}</td>
+                  <td class="blue-text center-align">${jsonData.countries_stat[key].cases}</td>
+                  <td class="green-text center-align">${jsonData.countries_stat[key].total_recovered}</td>
+                  <td class="orange-text center-align">${jsonData.countries_stat[key].new_cases}</td>
+                  <td class="red-text center-align">${jsonData.countries_stat[key].deaths}</td>
+                  `;
+                  // UPDATE DOM //
+                  document.getElementById('tbody').append(newCountryRow);
+                  // OPEN COUNTRY SPECIFIC GRAPH ON CLICK //
+                  newCountryRow.onclick = function () {
+                    //console.log(`Key ${key}`);
+                    const additionalIndividualData = document.createElement('div');
+                    additionalIndividualData.innerHTML = `
+                    <div id="delete" onclick=closeFuncion()><i class="fa fa-close fa-2x right close"></i></div>
+                    <h4>${jsonData.countries_stat[key].country_name} Stats</h4>
+                    <div class="mainData">
+                      <h6 class="blue-text blue lighten-5">Total Cases: ${jsonData.countries_stat[key].cases}</h6>
+                      <h6 class="green-text green lighten-5">Recovered: ${jsonData.countries_stat[key].total_recovered}</h6>
+                      <h6 class="orange-text orange lighten-5">New Cases: ${jsonData.countries_stat[key].new_cases}</h6>
+                      <h6 class="red-text red lighten-5">Deaths: ${jsonData.countries_stat[key].deaths}</h6>
+                    </div>  
+                    <div>
+                      <canvas id="bar-chart"></canvas>
+                    </div>
+                    `;
+                    additionalIndividualData.className = 'additionalIndividualData';
+                    additionalIndividualData.id = 'additionalIndividualData';
+                    document.getElementById('block').appendChild(additionalIndividualData);
+                    showBarGraph(key);
+                    // BETTER UI EXPERIENCE OF HIDING/REMOVING FROM DOM //
+                    $('#world').fadeOut();
+                    //document.getElementById('world').style.display = "none";
+                    $('#table').fadeOut();
+                    //document.getElementById('table').style.display = "none";
+                  };
+                };
+                // FUNCTION TO GENERATE COUNTRY SPECIFIC GRAPH //
+                const showBarGraph = (key) => {
+                  //console.log(jsonData);
+                  //console.log(key);
+                  // REPLACE TO REMOVE , IN THE STRING OF NUMBER OF CASES //
+                  new Chart(document.getElementById("bar-chart"), {
+                    type: 'bar',
+                    data: {
+                      labels: ["Total Cases", "Recovered", "New Cases", "Deaths"],
+                      datasets: [
+                        {
+                          label: "Population",
+                          backgroundColor: ["#64b5f6", "#81c784 ","#ff9800","#ef5350"],
+                          data: [parseInt(jsonData.countries_stat[key].cases.replace(/,/g, "")),
+                          parseInt(jsonData.countries_stat[key].total_recovered.replace(/,/g, "")),
+                          parseInt(jsonData.countries_stat[key].new_cases.replace(/,/g, "")),
+                          parseInt(jsonData.countries_stat[key].deaths.replace(/,/g, ""))
+                          ]
+                        }
+                      ]
+                    },
+                    options: {
+                      legend: { display: false },
+                      title: {
+                        display: true,
+                        text: `${jsonData.countries_stat[key].country_name} COVID Statistics`
+                      }
+                    }
+                });
+                };
+                // CATCH BLOCK FOR ERROR MESSAGE DISPLAY ON DOM //
+              } catch(error){
+                const errorRow = document.createElement('div');
+                errorRow.classList = "center-align red lighten-5 red-text";
+                errorRow.innerHTML = new Error(`<i class="fa fa-exclamation-triangle"></i> ${error.message}, please try again`)
+                document.getElementById('block').appendChild(errorRow);
+              }
+              };
+              // FUNCTION TO CLOSE THE BAR GRAPH //
+            const closeFuncion = () => {
+              var id = null;
+              console.log('Delete');
+              document.getElementById('additionalIndividualData').remove();
+              $('#table').fadeIn();
+              $('#world').fadeIn();
+            };  
+            // LOGIC TO TOGGLE ORDER OF CASES FROM MAX CASES TO MIN CASES // 
+            var toggleArrange = 'MAX_CASES';
+            const toggleOrder = () => {
+              // UPDATE USER VIA DOM AFTER SUCCESSFUL TOGGLE //
+              const processing = document.createElement('div');
+              processing.classList = 'center-align green-text green lighten-5 processing';
+              processing.id = 'processing';
+              processing.style.display = 'block';
+              processing.innerHTML = '<i class="fa fa-check"></i> Statistical Data Rearranged';
+              document.getElementById('switch').append(processing);
+              setTimeout(function(){
+                processing.style.display = 'none';
+              }, 7500);
+              // TOGGLE FROM MAX_CASES => MIN_CASES //
+              if(toggleArrange == 'MAX_CASES'){
+              // ALL VARS NEEDED FOR EXECUTION //
+              var table, noOfRows, switchElement, id, numberOfCasesBigId, numberOfCasesSmallId, shouldSwitch, reverseSwitch;
+              console.log(toggleArrange);
+              table = document.getElementsByTagName('tbody');
+              switchElement = true;
+              //console.log(table);
+                // MAIN LOOP //
+              while(switchElement){
+                switchElement = false;
+                // TOTAL NO OF ROWS IN TBODY //
+                noOfRows = table[0].rows;
+                //console.log(noOfRows.length);
+
+                  for(id = 0 ; id < (noOfRows.length - 1) ; id++){
+                    // GET ID OF COUNTRY WITH HIGHER CASES //
+                    numberOfCasesBigId = noOfRows[id].id;
+                    // GET ID OF COUNTRY WITH LOWER CASES //
+                    numberOfCasesSmallId = noOfRows[id+1].id;
+                    //console.log(numberOfCasesBigId);
+                    //console.log(numberOfCasesSmallId);
+                    shouldSwitch = false;
+                    if(parseInt(numberOfCasesBigId) < parseInt(numberOfCasesSmallId)){
+                      shouldSwitch = true;
+                      break;
+                    }
+                  }
+                
+                if(shouldSwitch){
+                  // INSERT LOWER CASES BEFORE HIGHER CASES //
+                  noOfRows[id].parentNode.insertBefore(noOfRows[id + 1], noOfRows[id]);
+                  switchElement = true;
+                }
+              }
+              console.log(toggleArrange);
+              };
+
+              // TOGGLE FROM MIN_CASES => MAX_CASES //
+              if(toggleArrange == 'MIN_CASES'){
+              // ALL VARS NEEDED FOR EXECUTION //
+              var rTable, rNoOfRows, rSwitchElement, rId, rNumberOfCasesBig, rNumberOfCasesSmall, reverseSwitch;
+              console.log(toggleArrange);
+              rTable = document.getElementsByTagName('tbody');
+              rSwitchElement = true;
+              //console.log(table);
+
+              while(rSwitchElement){
+                rSwitchElement = false;
+                //console.log(rTable[0].rows);
+                rNoOfRows = rTable[0].rows;
+                //console.log(rNoOfRows.length);
+
+                  for(id = 0 ; id < (rNoOfRows.length - 1) ; id++){
+                    rNumberOfCasesBig = rNoOfRows[id+1].id;
+                    rNumberOfCasesSmall = rNoOfRows[id].id;
+                    //console.log(numberOfCasesBigId);
+                    //console.log(numberOfCasesSmallId);
+                    reverseSwitch = false;
+                    if(parseInt(rNumberOfCasesBig) < parseInt(rNumberOfCasesSmall)){
+                      reverseSwitch = true;
+                      //console.log(id);
+                      break;
+                    }
+                  }
+                
+                if(reverseSwitch){
+                  rNoOfRows[id].parentNode.insertBefore(rNoOfRows[id + 1], rNoOfRows[id]);
+                  rSwitchElement = true;
+                  //console.log('reverseSwitch');
+                }
+              }
+              console.log(toggleArrange);
+              };
+              // FLAG_VARIABLE = !FLAG_VARIABLE i.e. TOGGLE //
+              if(toggleArrange == 'MAX_CASES'){
+                toggleArrange = 'MIN_CASES';
+              } else {
+                toggleArrange = 'MAX_CASES';
+              }
+            };
+
+        // HELPER TOGGLE VARIABLE //
+        var toggle = "LIGHT_THEME";
+        // FUNCTIONAL LOGIC FOR TOGGLE //
+        function toggleTheme(){
+          // LIGHT_THEME => DARK_THEME //
+          if(toggle == "LIGHT_THEME"){
+            document.getElementById('toggleTheme').href = '../Task_1/portfolioDarkTheme.css';
+            document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' LIGHT THEME';  
+            toggle = "DARK_THEME";
+          } else{
+            // DARK_THEME => LIGHT_THEME //
+            document.getElementById('toggleTheme').href = '../Task_1/portfolioLightTheme.css';
+            document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' DARK THEME';   
+            toggle="LIGHT_THEME"
+          }   
+        }
+      // FUNC INIT //
+      getData();
+      </script>
+  </body>
+</html>
