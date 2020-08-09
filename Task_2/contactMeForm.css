@@ -1,0 +1,140 @@
+/* IMPORT GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+/* VARIABLE COLORS */
+:root{
+    --primaryColor: #333;
+    --secondaryColor: white;
+    --filterColor: grey;
+    --backgroundColor: white;
+}
+
+body{
+    background-color: var(--backgroundColor);
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+i{
+    color: var(--primaryColor);
+}
+
+.navbar{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+
+.navbar h1{
+    color: var(--filterColor);
+    text-transform: uppercase;
+    letter-spacing: 24px;
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    min-height: 75px;
+    vertical-align: middle;
+}
+
+.block{
+    width: 70% !important;
+}
+
+.lever{
+    background-color: var(--filterColor) !important;
+}
+
+.lever::after{
+    background-color: var(--primaryColor) !important;
+}
+
+.form-control{
+    background-color: var(--secondaryColor);
+    margin: 20px;
+    border: 2px var(--primaryColor) solid;
+    border-radius: 10px;
+}
+
+input{
+    color: var(--primaryColor);
+}
+
+.form-control .row h3{
+    padding: 10px;
+    margin: auto;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    color: var(--filterColor);
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.block_elem-theme{
+    float: right;
+    padding: 5px 10px;
+    margin: 8px;
+    letter-spacing: 3px;
+}
+
+.block_elem-theme a{
+    padding: 5px 10px;
+}
+
+.block_elem-theme a:hover{
+    border: 1.5px var(--primaryColor) solid;
+    border-radius: 12px;
+}
+
+.form-control .row input[type="submit"]{
+    color: #039be5;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    border: 1.5px var(--primaryColor) solid;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 5px 15px;
+}
+
+.form-control .row input[type="submit"]:hover{
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor);
+}
+
+@media(max-width: 600px){
+    .block{
+        width: 95% !important;
+    }
+    .navbar h1{
+        font-size: 40px;
+        letter-spacing: 14px;
+        padding: 15px 0;
+    }
+    .form-control{
+        margin: 20px 10px;
+    }
+    .form-control .row h3{
+        font-size: 28px;
+        letter-spacing: 8px;
+    }
+}
+
+@media(max-width: 375px){
+    .block{
+        width: 100% !important;
+    }
+    .navbar h1{
+        font-size: 30px;
+        letter-spacing: 8px;
+        padding: 25px 0;
+    }
+    .form-control{
+        margin: 20px 10px;
+    }
+    .form-control .row h3{
+        font-size: 18px;
+        letter-spacing: 4px;
+    }
+}
