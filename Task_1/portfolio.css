@@ -88,6 +88,7 @@ body{
     border-radius: 12px;
     padding: 10px;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .block_elem_elem_elem-study h6 a:hover{

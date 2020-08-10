@@ -36,6 +36,7 @@
                             <h6 class='hide-on-small-only'><a href='../Task_2/contactMeForm.html' class='contact-me' id='contactMeBtn'>Contact Me</a></h6>
                             <!-- toggleTheme() FUNCTION TO TOGGLE THEMES -->
                             <h6 class='hide-on-small-only'><div onclick="toggleTheme()"><a class='theme' id='themeBtn'>DARK THEME</a></div></h6>
+                            <h6 class='hide-on-small-only'><a href='../Task_3/covidapi.html' class='theme' id='themeBtn'>COVID STATS</a></h6>
                         </div>
                     </div>
                 </div>
@@ -59,6 +60,7 @@
                             <h6><br><br><a href='../Task_2/contactMeForm.html' class='contact-me-small-screen' id='contactMeBtnSmall'>Contact Me</a><br><br></h6>
                             <!-- toggleTheme() FUNCTION TO TOGGLE THEMES -->
                             <h6><div onclick="toggleTheme()"><br><a class='contact-me-small-screen' id='themeBtnSmall'>DARK THEME</a><br><br></div></h6>
+                            <h6><br><a href="../Task_3/covidapi.html" class='contact-me-small-screen' id='themeBtnSmall'>COVID STATS</a><br><br></h6>
                         </div>
                         <div class="block_elem_elem_elem block_elem_elem_elem-languages">
                             <h4><i class="fa fa-code"></i> Languages / Frameworks</h4>
@@ -123,7 +125,7 @@
                                 Attached you will find the pdf for participation certificate. <a href="../Task_1/pdfs/hackathon_certificate.pdf" target="_blank">Click to view Certificate</a>
                                 <br><br>
                                 <!-- SELLBUY VIDEO EXPLANATION -->
-                                Video to explain the project with more in-sight. <a href="../Task_1/videos/hackathon_project1.mp4" target="_blank">Click to view Video</a>
+                                Video to explain the project with more in-sight. <a href="../Task_1/videos/hackathon_project1.mp4" target="_blank">Click to view Video Explanation</a>
                             </p>
                             <a href="https://github.com/Shubh-Nisar/Commodity-Exchange-Market">sellbuy.com</a>
                         </li>
@@ -167,23 +169,45 @@
             $('.materialboxed').materialbox();
         }); 
         // HELPER TOGGLE VARIABLE //
-        var toggle = "LIGHT_THEME";
+        //var toggle = "LIGHT_THEME";
+        //window.localStorage.setItem("darkTheme", "false");
         // FUNCTIONAL LOGIC FOR TOGGLE //
+        // FETCH INITIAL THEME STATE OF THE PAGES //
+        if(window.localStorage.getItem("darkTheme") === "true"){
+            //console.log(window.localStorage.getItem("darkTheme"));
+            document.getElementById('toggleTheme').href = '../Task_1/portfolioDarkTheme.css';
+            document.getElementById('themeBtn').innerHTML = 'LIGHT THEME'; 
+            document.getElementById('themeBtnSmall').innerHTML = 'LIGHT THEME';
+            //toggle = "DARK_THEME";
+            //console.log(window.localStorage.getItem("darkTheme"));
+        } else if(window.localStorage.getItem("darkTheme") === "false"){
+            // DARK_THEME => LIGHT_THEME //
+            document.getElementById('toggleTheme').href = '../Task_1/portfolioLightTheme.css';
+            document.getElementById('themeBtn').innerHTML = 'DARK THEME'; 
+            document.getElementById('themeBtnSmall').innerHTML = 'DARK THEME';
+            //toggle="LIGHT_THEME";
+        }
+        // THEME TOGGLE VIA BTN //
         function toggleTheme(){
             // LIGHT_THEME => DARK_THEME //
-            if(toggle == "LIGHT_THEME"){
+            if(window.localStorage.getItem("darkTheme") === "false"){
+                //console.log(window.localStorage.getItem("darkTheme"));
                 document.getElementById('toggleTheme').href = '../Task_1/portfolioDarkTheme.css';
                 document.getElementById('themeBtn').innerHTML = 'LIGHT THEME'; 
                 document.getElementById('themeBtnSmall').innerHTML = 'LIGHT THEME'; 
-                toggle = "DARK_THEME";
-            } else{
+                //toggle = "DARK_THEME";
+                window.localStorage.setItem("darkTheme", "true");
+                //console.log(window.localStorage.getItem("darkTheme"));
+            } else if(window.localStorage.getItem("darkTheme") === "true"){
                 // DARK_THEME => LIGHT_THEME //
                 document.getElementById('toggleTheme').href = '../Task_1/portfolioLightTheme.css';
                 document.getElementById('themeBtn').innerHTML = 'DARK THEME'; 
                 document.getElementById('themeBtnSmall').innerHTML = 'DARK THEME';
-                toggle="LIGHT_THEME"
+                //toggle="LIGHT_THEME";
+                window.localStorage.setItem("darkTheme", "false");
             }   
         }
+        //toggleTheme();
 
         function loadForm(){
 

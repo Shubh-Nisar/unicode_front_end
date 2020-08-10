@@ -28,8 +28,8 @@
                 <h3>
                     Contact Me
                 </h3>
-                <div class="block_elem-theme">
-                    <!-- <a class='theme' id='themeBtn'><i class="fa fa-refresh"></i> DARK THEME</a> -->
+                <!--<div class="block_elem-theme">
+                    <a class='theme' id='themeBtn'><i class="fa fa-refresh"></i> DARK THEME</a>
                     <div class="switch">
                         <label>
                             <i class="fa fa-sun"></i>
@@ -38,7 +38,7 @@
                             <i class="fa fa-moon"></i>
                         </label>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="row">
                 <div class="input-field col s12">
@@ -78,27 +78,33 @@
         <script>
         // HELPER TOGGLE VARIABLE //
         var toggle = "LIGHT_THEME";
+        //window.localStorage.setItem("darkTheme", "false");
         // FUNCTIONAL LOGIC FOR TOGGLE //
-        function toggleTheme(){
+        //function toggleTheme(){
+            // FETCH SAME THEME AS THE MAIN PORTFOLIO PAGE //
             // LIGHT_THEME => DARK_THEME //
-            if(toggle == "LIGHT_THEME"){
+            if(window.localStorage.getItem("darkTheme") === "true"){
                 document.getElementById('toggleTheme').href = '../Task_1/portfolioDarkTheme.css';
-                document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' LIGHT THEME';  
-                toggle = "DARK_THEME";
-            } else{
+                //document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' LIGHT THEME';  
+                //toggle = "DARK_THEME";
+                //window.localStorage.setItem("darkTheme", "false");
+            } else if(window.localStorage.getItem("darkTheme") === "false"){
                 // DARK_THEME => LIGHT_THEME //
                 document.getElementById('toggleTheme').href = '../Task_1/portfolioLightTheme.css';
-                document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' DARK THEME';   
-                toggle="LIGHT_THEME"
+                //document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' DARK THEME';   
+                //toggle="LIGHT_THEME";
+                //window.localStorage.setItem("darkTheme", "true");
             }   
-        }
-
+        //}
+        //toggleTheme();
+            // FORM VALIDATION OBJECT //
             var type = null;
             var formIsValid = {
                 name: false,
                 email: false,
                 contact: false,
             };
+            // STATUS OF INDIVIDUAL FIELDS //
             var nameStatus, emailStatus, contactStatus;
             function checkFunction(type){
                 console.log(type);
@@ -107,14 +113,17 @@
                     nameStatus = false;
                     value = document.getElementById('name').value
                     console.log(value);
+                    // TEXT VALIDATION REGEX //
                     var criteria = /^([A-Za-z ])+$/g;
                     if(!value.match(criteria)){
                         console.log('Err');
                         document.getElementById('nameError').innerHTML = 'Please enter a valid name';
+                        // UI VALIDATION RESPONSE //
                         setTimeout(() => {
                             document.getElementById('nameError').innerHTML = '';
                         }, 4000);
                     } else {
+                        // UI VALIDATION RESPONSE //
                         console.log('No Err');
                         document.getElementById('nameSuccess').innerHTML = 'Valid Name Entry';
                         nameStatus = true;
@@ -129,14 +138,17 @@
                     emailStatus = false;
                     value = document.getElementById('email').value
                     console.log(value);
+                    // USER EMAIL VALIDATION REGEX //
                     var criteria = 	/^([a-zA-Z0-9_.]+)@([a-zA-Z0-9_.]+)\.([a-zA-Z]{2,5})$/g;
                     if(!value.match(criteria)){
                         console.log('Err');
                         document.getElementById('emailError').innerHTML = 'Please enter a valid email';
+                        // UI VALIDATION RESPONSE //
                         setTimeout(() => {
                             document.getElementById('emailError').innerHTML = '';
                         }, 4000);
                     } else {
+                        // UI VALIDATION RESPONSE //
                         console.log('No Err');
                         document.getElementById('emailSuccess').innerHTML = 'Valid Email Entry';
                         emailStatus = true;
@@ -150,14 +162,17 @@
                     contactStatus = false;
                     value = document.getElementById('contact').value
                     console.log(value);
+                    // USER PHONE NUMBER VALIDATION REGEX //
                     var criteria = 	/^\d{10}$/g;
                     if(!value.match(criteria)){
                         console.log('Err');
                         document.getElementById('contactError').innerHTML = 'Please enter a valid mobile number';
+                        // UI VALIDATION RESPONSE //
                         setTimeout(() => {
                             document.getElementById('contactError').innerHTML = '';
                         }, 4000);
                     } else {
+                        // UI VALIDATION RESPONSE //
                         console.log('No Err');
                         document.getElementById('contactSuccess').innerHTML = 'Valid mobile number Entry';
                         contactStatus = true;
@@ -168,6 +183,7 @@
                 }
 
             }
+            // ENTIRE FORM VALIDATION //
             const checkFormStatus = (e) => {
                 if(!nameStatus || !emailStatus || !contactStatus){
                     e.preventDefault();

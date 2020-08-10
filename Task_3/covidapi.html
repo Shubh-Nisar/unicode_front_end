@@ -70,7 +70,6 @@
                 worldRow.innerHTML = `
                 <div class='worldTitle'>
                   <h3><i class="fa fa-globe"></i> Global Covid Stats</h3>
-                  <a class='theme' id='themeBtn' onclick="toggleTheme()"><i class="fa fa-refresh"></i> DARK THEME</a>
                 </div>
                 <div class='worldData'>
                   <h5 class="blue-text center-align"><i class="fa fa-line-chart"></i> Total Cases: ${jsonData.world_total.total_cases}</h5>
@@ -282,21 +281,21 @@
             };
 
         // HELPER TOGGLE VARIABLE //
-        var toggle = "LIGHT_THEME";
+        //var toggle = "LIGHT_THEME";
         // FUNCTIONAL LOGIC FOR TOGGLE //
-        function toggleTheme(){
+        //function toggleTheme(){
           // LIGHT_THEME => DARK_THEME //
-          if(toggle == "LIGHT_THEME"){
+          if(window.localStorage.getItem("darkTheme") === "true"){
             document.getElementById('toggleTheme').href = '../Task_1/portfolioDarkTheme.css';
-            document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' LIGHT THEME';  
-            toggle = "DARK_THEME";
-          } else{
+            //document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' LIGHT THEME';  
+            //toggle = "DARK_THEME";
+          } else if(window.localStorage.getItem("darkTheme") === "false"){
             // DARK_THEME => LIGHT_THEME //
             document.getElementById('toggleTheme').href = '../Task_1/portfolioLightTheme.css';
-            document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' DARK THEME';   
-            toggle="LIGHT_THEME"
+            //document.getElementById('themeBtn').innerHTML = '<i class="fa fa-refresh"></i>' + ' DARK THEME';   
+            //toggle="LIGHT_THEME"
           }   
-        }
+        //}
       // FUNC INIT //
       getData();
       </script>
