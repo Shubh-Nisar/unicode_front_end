@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- font-awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Local CSS file -->
+    <!-- TITLE ICON -->
     <link rel="icon" type="icon" href="pictures/shubh2.jpg">
+    <!-- Local CSS file -->
     <link rel="stylesheet" href="../Task_1/portfolio.css">
+    <!-- TOGGLE THEME CSS -->
     <link id="toggleTheme" rel="stylesheet" href="">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -31,7 +33,7 @@
                         <h6>Junior College: K.C. College, Churchgate</h6>
                         <h6>Senior College: D.J. Sanghvi COE, Vile Parle</h6>
                         <div class='flex-buttons'>
-                            <h6 class='hide-on-small-only'><a href="" class='contact-me'>Contact Me</a></h6>
+                            <h6 class='hide-on-small-only'><a href='../Task_2/contactMeForm.html' class='contact-me' id='contactMeBtn'>Contact Me</a></h6>
                             <!-- toggleTheme() FUNCTION TO TOGGLE THEMES -->
                             <h6 class='hide-on-small-only'><div onclick="toggleTheme()"><a class='theme' id='themeBtn'>DARK THEME</a></div></h6>
                         </div>
@@ -54,7 +56,7 @@
                         </div>
                         <div class="hide-on-med-and-up">
                             <!-- CONTACT ME BUTTON LOOK -->
-                            <h6><br><br><a href="" class='contact-me-small-screen'>Contact Me</a><br><br></h6>
+                            <h6><br><br><a href='../Task_2/contactMeForm.html' class='contact-me-small-screen' id='contactMeBtnSmall'>Contact Me</a><br><br></h6>
                             <!-- toggleTheme() FUNCTION TO TOGGLE THEMES -->
                             <h6><div onclick="toggleTheme()"><br><a class='contact-me-small-screen' id='themeBtnSmall'>DARK THEME</a><br><br></div></h6>
                         </div>
@@ -181,6 +183,10 @@
                 document.getElementById('themeBtnSmall').innerHTML = 'DARK THEME';
                 toggle="LIGHT_THEME"
             }   
+        }
+
+        function loadForm(){
+
         }
     </script>
     </body>

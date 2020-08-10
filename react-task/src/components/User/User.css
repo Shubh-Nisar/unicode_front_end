@@ -1,0 +1,13 @@
+@import '../../constants/colors.css';
+
+/* IMPORT GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+.User-block{
+    width: 90%;
+    margin: auto;
+    font-family: 'Montserrat' ,Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: var(--primaryColor);
+    background-color: var(--backgroundColor);
+}

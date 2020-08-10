@@ -1,0 +1,43 @@
+@import '../constants/colors.css';
+
+/* IMPORT GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+.Input-block{
+    margin: 20px;
+}
+
+.Input-block__elem{
+    text-align: center;
+}
+
+.Input-block--flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.Input-block--flex input{
+    border-radius: 5px;
+    border: 1px var(--primaryColor) solid;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+.Input-block--btn{
+    margin: 10px auto;
+    padding: 8px;
+    border: 1px var(--primaryColor) solid;
+    border-radius: 10px;
+    background-color: var(--backgroundColor);
+    color: var(--primaryColor);
+    font-size: 16px;
+}
+
+.Input-block--btn:hover{
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor);
+}

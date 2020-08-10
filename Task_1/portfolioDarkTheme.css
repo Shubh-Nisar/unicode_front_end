@@ -5,6 +5,10 @@
     --backgroundColor: #181818;
 }
 
-.navbar{
+.navbar, .form-control .row h3{
     background-image: linear-gradient(to right, black 0%, #121212 100%);
+}
+
+.hoverable:hover {
+    box-shadow: 2px 4px 5px 0 var(--primaryColor), 2px 5px 3px -3px var(--primaryColor), 2px 5px 10px 0 var(--primaryColor);
 }

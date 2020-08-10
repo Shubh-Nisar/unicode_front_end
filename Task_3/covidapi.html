@@ -21,6 +21,11 @@
   <body>
       <!-- MAIN CONTAINER BLOCK -->
       <div class="container" id='block'>
+        <marquee behavior="scroll" direction="left">
+          <p class='blue-text'>
+            We stand with everyone fighting on the frontlines. Precautions: 1] STAY Home. 2] KEEP a safe distance. 3] WASH hands often. 4] COVER your cough. 5] SICK? Isolate yourself and get yourself tested.
+          </p>
+        </marquee>
         <!-- DISPLAY WORLD STATS -->
         <div id="world"></div>
         <hr class="hide-on-small-only">
@@ -28,10 +33,10 @@
         <table id='table'>
             <thead>
                 <td class="center-align black-text grey lighten-2"><i class="fa fa-map"></i> Country</td>
-                <td class="center-align blue-text blue lighten-5"><i class="fa fa-line-chart"></i> Total Cases</td>
-                <td class="center-align green-text green lighten-5"><i class="fa fa-heartbeat"></i> Recovered</td>
-                <td class="center-align orange-text orange lighten-5"><i class="fa fa-arrow-up"></i> New Cases</td>
-                <td class="center-align red-text red lighten-5"><i class="fa fa-arrow-down"></i> Deaths</td>
+                <td class="center-align blue-text blue lighten-4"><i class="fa fa-line-chart"></i> Total Cases</td>
+                <td class="center-align green-text green lighten-4"><i class="fa fa-heartbeat"></i> Recovered</td>
+                <td class="center-align orange-text orange lighten-4"><i class="fa fa-arrow-up"></i> New Cases</td>
+                <td class="center-align red-text red lighten-4"><i class="fa fa-arrow-down"></i> Deaths</td>
             </thead>
             <!-- DATA RECEIVED FROM JS API -->
             <tbody id='tbody'></tbody>
@@ -56,7 +61,7 @@
                   })
 
                 const jsonData = await data.json();
-                console.log(jsonData);
+                //console.log(jsonData);
                 // UPDATE WORLD DATA ON DOM // 
                 const worldRow = document.createElement('div');
                 //worldRow.className = 'hoverable';
@@ -115,10 +120,10 @@
                     <div id="delete" onclick=closeFuncion()><i class="fa fa-close fa-2x right close"></i></div>
                     <h4>${jsonData.countries_stat[key].country_name} Stats</h4>
                     <div class="mainData">
-                      <h6 class="blue-text blue lighten-5">Total Cases: ${jsonData.countries_stat[key].cases}</h6>
-                      <h6 class="green-text green lighten-5">Recovered: ${jsonData.countries_stat[key].total_recovered}</h6>
-                      <h6 class="orange-text orange lighten-5">New Cases: ${jsonData.countries_stat[key].new_cases}</h6>
-                      <h6 class="red-text red lighten-5">Deaths: ${jsonData.countries_stat[key].deaths}</h6>
+                      <h6 class="blue-text blue lighten-4">Total Cases: ${jsonData.countries_stat[key].cases}</h6>
+                      <h6 class="green-text green lighten-4">Recovered: ${jsonData.countries_stat[key].total_recovered}</h6>
+                      <h6 class="orange-text orange lighten-4">New Cases: ${jsonData.countries_stat[key].new_cases}</h6>
+                      <h6 class="red-text red lighten-4">Deaths: ${jsonData.countries_stat[key].deaths}</h6>
                     </div>  
                     <div>
                       <canvas id="bar-chart"></canvas>
@@ -186,7 +191,7 @@
             const toggleOrder = () => {
               // UPDATE USER VIA DOM AFTER SUCCESSFUL TOGGLE //
               const processing = document.createElement('div');
-              processing.classList = 'center-align green-text green lighten-5 processing';
+              processing.classList = 'center-align green-text green lighten-4 processing';
               processing.id = 'processing';
               processing.style.display = 'block';
               processing.innerHTML = '<i class="fa fa-check"></i> Statistical Data Rearranged';
