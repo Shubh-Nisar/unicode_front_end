@@ -5,28 +5,32 @@ import '../QuestionCard/QuestionCard.css'
 import Rules from '../Rules/Rules';
 import Result from '../../Result/Result';
 
+// ARRAY USED FOR RESULT //
 const green = [];
 
+// MAIN FUNC //
 const QuestionCard = props => {
     console.log(quiz);
+    // QUIZ QS COUNTER //
     const [i, setI] = useState(0); 
-
+    // SAVE INPUT ANSWER //
     const saveAnswerHandler = (questionIndex, answerIndex) => {
         //console.log(questionIndex);
         //console.log(answerIndex);
         const correctIndex = quiz.questions[questionIndex].correctIndex;
-
+        // CORRECT ANSWER //
         if(quiz.questions[questionIndex].answers[correctIndex] === quiz.questions[questionIndex].answers[answerIndex]){
             console.log('Correct');
             green.push({questionNo: questionIndex,correct: true, choice: answerIndex});
             setI(i+1);
         } else {
+            // INCORRECT ANSWER //
             console.log('Incorrect');
             green.push({questionNo: questionIndex, correct: false, choice: answerIndex});
             setI(i+1);
         }
     };
-
+    // DISPLAY RESULT AT END OF QUIZ //
     if(i === quiz.questions.length){
         console.log('Break');
         return (

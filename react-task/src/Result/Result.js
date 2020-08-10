@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import quiz from '../Quiz.json';
 import '../Result/Result.css';
 
+// THE RESULT SCREEN //
 const Result = props => {
     console.log(props.answers);
     var result = 0;
+    // DISPLAY SINGLE QS INSIDE OF A li tag //
 const data = props.answers.map((elem) => <li key={elem.questionNo}>
     <div className='Result-block'>
         <div className='Result-block__elem--qs'>
@@ -39,7 +41,7 @@ const data = props.answers.map((elem) => <li key={elem.questionNo}>
         </div>
     </div>
 </li>);
-
+    // CALCULATE THE USER RESULT //
     const resultCalculate = () => {
         const resultArr = props.answers.filter((elem) => elem.correct === true);
         result = resultArr.length

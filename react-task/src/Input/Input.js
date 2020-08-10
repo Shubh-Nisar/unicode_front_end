@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Input.css';
 
+// INPUT: NAME & EMAIL //
 const Input = props => {
     const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);

@@ -3,6 +3,7 @@ import '../User/User.css';
 import NavBar from '../../NavBar/NavBar';
 import QuestionCard from '../QuestionCard/QuestionCard';
 
+// COMPONENT TO GREET THE USER //
 const User = props => {
     return(
         <>
